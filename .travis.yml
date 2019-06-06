@@ -20,7 +20,7 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
   - docker push aveselovski/my-pages-client
-    - docker push aveselovski/my-pages-nginx
+  - docker push aveselovski/my-pages-nginx
   - docker push aveselovski/my-pages-admin
   - docker push aveselovski/my-pages-backend
 
