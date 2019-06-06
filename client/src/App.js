@@ -1,6 +1,6 @@
 // core
 import React from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 // utils
 import GlobalStyles from './styles/globalStyles';
@@ -21,18 +21,20 @@ const StyledApp = styled.div`
 
 function App(props) {
   return (
-    <StyledApp>
-      <TopNavigation />
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/projects" component={ProjectsPage} />
-        <Route path="/experience" component={ExpEduPage} />
-        <Route path="*" component={NotFoundPage} />
-      </Switch>
-      <GlobalStyles />
-    </StyledApp>
+    <Router>
+      <StyledApp>
+        <TopNavigation />
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/projects" component={ProjectsPage} />
+          <Route path="/experience" component={ExpEduPage} />
+          <Route path="*" component={NotFoundPage} />
+        </Switch>
+        <GlobalStyles />
+      </StyledApp>
+    </Router>
   );
 }
 
-export default withRouter(App);
+export default App;
