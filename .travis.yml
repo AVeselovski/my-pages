@@ -1,0 +1,36 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  # build testing images
+  - docker build -t aveselovski/client-test -f ./client/Dockerfile.dev ./client
+
+script:
+  # run tests
+  - docker run aveselovski/client-test yarn ci_test -- --coverage
+
+after_success:
+  # build production images
+  - docker build -t aveselovski/my-pages-client ./client
+  - docker build -t aveselovski/my-pages-admin ./admin
+  - docker build -t aveselovski/my-pages-backend ./backend
+  # login to docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push images to docker hub
+  - docker push aveselovski/my-pages-client
+  - docker push aveselovski/my-pages-admin
+  - docker push aveselovski/my-pages-backend
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-north-1
+  app: my-pages
+  env: MyPages-env
+  bucket_name: elasticbeanstalk-eu-north-1-829880736404
+  bucket_path: my-pages
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
