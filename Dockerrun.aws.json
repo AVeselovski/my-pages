@@ -1,0 +1,40 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "nginx",
+      "image": "aveselovski/my-pages-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "memory": 128,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "admin", "backend"]
+    },
+    {
+      "name": "client",
+      "image": "aveselovski/my-pages-client",
+      "hostname": "client",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "admin",
+      "image": "aveselovski/my-pages-admin",
+      "hostname": "admin",
+      "essential": false,
+      "memory": 128
+    },
+    {
+      "name": "backend",
+      "image": "aveselovski/my-pages-backend",
+      "hostname": "backend",
+      "essential": false,
+      "memory": 128
+    }
+  ]
+}
