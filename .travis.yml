@@ -12,15 +12,15 @@ script:
 
 after_success:
   # build production images
-  - docker build -t aveselovski/my-pages-nginx ./nginx
   - docker build -t aveselovski/my-pages-client ./client
+  - docker build -t aveselovski/my-pages-nginx ./nginx
   - docker build -t aveselovski/my-pages-admin ./admin
   - docker build -t aveselovski/my-pages-backend ./backend
   # login to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # push images to docker hub
-  - docker push aveselovski/my-pages-nginx
   - docker push aveselovski/my-pages-client
+    - docker push aveselovski/my-pages-nginx
   - docker push aveselovski/my-pages-admin
   - docker push aveselovski/my-pages-backend
 
