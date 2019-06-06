@@ -1,0 +1,20 @@
+{
+  "extends": [
+    "react-app",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:import/errors",
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react"],
+  "rules": {
+    "react/prop-types": 1,
+    "no-duplicate-imports": 2,
+    "no-console": [1, { "allow": ["warn", "error"] }]
+  }
+}
