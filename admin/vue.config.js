@@ -2,5 +2,5 @@ module.exports = {
   devServer: {
     disableHostCheck: true,
   },
-  publicPath: '/admin',
+  publicPath: process.env.NODE_ENV !== 'production' ? '/admin' : '/',
 };
