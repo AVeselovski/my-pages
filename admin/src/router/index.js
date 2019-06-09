@@ -17,6 +17,10 @@ export default new VueRouter({
   base: process.env.BASE_URL,
   routes: [
     {
+      path: '*',
+      component: NotFoundPage,
+    },
+    {
       path: '/',
       component: MainPage,
       children: [
@@ -41,10 +45,6 @@ export default new VueRouter({
     {
       path: '/login',
       component: LoginPage,
-    },
-    {
-      path: '*',
-      component: NotFoundPage,
     },
   ],
 });

@@ -1,9 +1,12 @@
 FROM node:alpine as builder
-COPY ./ /app
 WORKDIR /app
-RUN yarn install && yarn build
+
+COPY ./package.json ./
+RUN yarn install
+COPY ./ ./
+RUN yarn build
 
 FROM nginx
-RUN mkdir /app
-COPY --from=builder /app/dist /app
-COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
+EXPOSE 4000
+COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
