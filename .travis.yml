@@ -26,10 +26,10 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: eu-north-1
+  region: eu-central-1
   app: my-pages
-  env: MyPages-env
-  bucket_name: elasticbeanstalk-eu-north-1-829880736404
+  env: MyPages-env-1
+  bucket_name: elasticbeanstalk-eu-central-1-829880736404
   bucket_path: my-pages
   on:
     branch: master

@@ -16,12 +16,8 @@ services:
     volumes:
       - /app/node_modules
       - ./backend:/app
-    environment:
-      - PGUSER=postgres
-      - PGHOST=postgres
-      - PGDATABASE=my_pages_db
-      - PGPASSWORD=my_pages_secret
-      - PGPORT=5432
+    env_file:
+      - ./backend/.env
   client:
     build:
       dockerfile: Dockerfile.dev
