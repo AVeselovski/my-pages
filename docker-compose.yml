@@ -30,5 +30,4 @@ services:
       dockerfile: Dockerfile.dev
       context: ./admin
     volumes:
-      - /app/node_modules
       - ./admin:/app
