@@ -1,29 +1,7 @@
-# admin
+# my-pages - admin
 
-## Project setup
-```
-yarn install
-```
+## Notes
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+Running correctly from '/admin' path both on production server and local, requires some tricky setups besides `docker-compose.yml`, `Dockerrun.aws.json` and `.travis.yml` files.
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Nginx proxy pass should contain '/' at the end (`proxy_pass http://admin/;`) on production, but removed locally.
