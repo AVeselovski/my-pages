@@ -11,7 +11,7 @@ const pgClient = new Pool({
 });
 pgClient.on('error', () => console.log('Lost postgres connection...'));
 
-pgClient.query('DROP TABLE IF EXISTS pages;').catch(err => console.log(err));
+// pgClient.query('DROP TABLE IF EXISTS pages;').catch(err => console.log(err));
 
 pgClient
   .query(
