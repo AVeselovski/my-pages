@@ -2,6 +2,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import propTypes from 'prop-types';
 
 // ! TEMP STYLES !
 const StyledTopNavigation = styled.div`
@@ -10,15 +11,22 @@ const StyledTopNavigation = styled.div`
   margin: 30px;
 `;
 
-const TopNavigation = () => {
+const TopNavigation = ({ pages }) => {
   return (
     <StyledTopNavigation>
       <Link to="/">Home</Link>
-      <Link to="/about">About</Link>
-      <Link to="/projects">Projects</Link>
-      <Link to="/experience">Exp, Edu, Skills</Link>
+      {pages.map(page => (
+        /** NOTE: paths are hardcoded for now, for future use */
+        <Link key={page.id} to={page.path} disabled={page.active}>
+          {page.name_of_page_short}
+        </Link>
+      ))}
     </StyledTopNavigation>
   );
+};
+
+TopNavigation.propTypes = {
+  pages: propTypes.array,
 };
 
 export default TopNavigation;
